@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { useState } from "react";
 
 export default function CompletionPage() {
   const [prompt, setPrompt] = useState("");
@@ -13,7 +13,7 @@ export default function CompletionPage() {
     setIsLoading(true);
     setPrompt("");
     try {
-      const response = await fetch("/api/completion", {
+      const response = await fetch("/api/completion/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
