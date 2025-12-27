@@ -22,7 +22,7 @@ export default function StreamPage() {
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       <Link href={`/`}>
-        <p className="text-2xl sm: pl-4 md:pl-0">Back</p>
+        <p className="text-2xl sm: pl-4 md:pl-0 hover: cursor-pointer">Back</p>
       </Link>
       {error && <div className="text-red-500 mb-4">{error.message}</div>}
       {isLoading && !completion && (
