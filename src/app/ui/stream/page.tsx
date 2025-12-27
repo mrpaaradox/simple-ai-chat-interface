@@ -1,6 +1,7 @@
 "use client";
 
 import { useCompletion } from "@ai-sdk/react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function StreamPage() {
@@ -20,16 +21,23 @@ export default function StreamPage() {
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <Link href={`/`}>
+        <p className="text-2xl sm: pl-4 md:pl-0">Back</p>
+      </Link>
       {error && <div className="text-red-500 mb-4">{error.message}</div>}
-      {isLoading && !completion && <div>Loading....</div>}
-      {completion && <div className="whitespace-pre-wrap">{completion}</div>}
+      {isLoading && !completion && (
+        <div className="sm: pl-4 md:pl-0">Loading....</div>
+      )}
+      {completion && (
+        <div className="whitespace-pre-wrap sm:pl-0 md: pl-4">{completion}</div>
+      )}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           setInput("");
           handleSubmit(e);
         }}
-        className="fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg"
+        className="fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg  "
       >
         <div className="flex gap-2">
           <input
