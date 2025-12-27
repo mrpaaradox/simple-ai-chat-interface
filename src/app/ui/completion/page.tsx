@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 export default function CompletionPage() {
@@ -13,7 +14,7 @@ export default function CompletionPage() {
     setIsLoading(true);
     setPrompt("");
     try {
-      const response = await fetch("/api/completion/stream", {
+      const response = await fetch("/api/completion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
@@ -36,11 +37,14 @@ export default function CompletionPage() {
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <Link href={`/`}>
+        <p className="text-2xl sm: pl-4 md:pl-0">Back</p>{" "}
+      </Link>
       {error && <div className="text-red-500">{error}</div>}
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="sm: pl-4 md:pl-0">Loading....</div>
       ) : completion ? (
-        <div className="whitespace-pre-wrap">{completion}</div>
+        <div className="whitespace-pre-wrap sm:pl-0 md: pl-4">{completion}</div>
       ) : null}
       <form
         onSubmit={complete}

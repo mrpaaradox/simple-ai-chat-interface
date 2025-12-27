@@ -8,7 +8,7 @@ export default function Home() {
         <Link href={`/ui/completion`}>Simple Chat Completion</Link>
       </div>
       <div className="text-2xl py-2 text-emerald-500">
-        <Link href={`/ui/stream`}>Stream Chat App</Link>
+        <Link href={`/ui/stream`}>Stream Chat Completion</Link>
       </div>
     </div>
   );
