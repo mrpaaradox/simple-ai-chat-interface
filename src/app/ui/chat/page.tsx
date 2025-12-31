@@ -28,6 +28,17 @@ export default function ChatPage() {
     inputRef.current?.focus();
   }, []);
 
+  // Handle input focus - scroll input into view on mobile
+  const handleInputFocus = () => {
+    // Small delay to allow keyboard to appear first
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ 
+        behavior: "smooth", 
+        block: "center" 
+      });
+    }, 300);
+  };
+
   return (
     <div className="flex flex-col h-screen w-full bg-white dark:bg-[#212121]">
       {/* Header */}
@@ -205,6 +216,7 @@ export default function ChatPage() {
                 placeholder="Message GPT"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onFocus={handleInputFocus}
                 disabled={status !== "ready"}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
