@@ -23,20 +23,27 @@ export default function ChatPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Focus input on mount
+  // Focus input on mount and scroll to it
   useEffect(() => {
     inputRef.current?.focus();
+    // Quick scroll to input on page load
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ 
+        behavior: "auto", 
+        block: "center" 
+      });
+    }, 100);
   }, []);
 
-  // Handle input focus - scroll input into view on mobile
+  // Handle input focus - scroll input into view quickly
   const handleInputFocus = () => {
     // Small delay to allow keyboard to appear first
     setTimeout(() => {
       inputRef.current?.scrollIntoView({ 
-        behavior: "smooth", 
+        behavior: "auto", 
         block: "center" 
       });
-    }, 300);
+    }, 100);
   };
 
   return (
