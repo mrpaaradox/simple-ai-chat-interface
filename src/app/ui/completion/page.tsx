@@ -38,7 +38,7 @@ export default function CompletionPage() {
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       <Link href={`/`}>
-        <p className="text-2xl sm: pl-4 md:pl-0 hover: cursor-pointer">Back</p>
+        <p className="text-2xl sm: pl-4 md:pl-0 hover:cursor-pointer">Back</p>
       </Link>
       {error && <div className="text-red-500">{error}</div>}
       {isLoading ? (
