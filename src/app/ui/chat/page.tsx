@@ -9,19 +9,30 @@ export default function ChatPage() {
   const { messages, sendMessage, status, error, stop } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const isAutoScrollingRef = useRef(true);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim() && status === "ready") {
       sendMessage({ text: input });
       setInput("");
+      isAutoScrollingRef.current = true;
     }
   };
 
-  // Auto-scroll to bottom when new messages arrive
+  // Smooth auto-scroll during streaming, only when user hasn't manually scrolled
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (!isAutoScrollingRef.current) return;
+    
+    if (status === "streaming") {
+      // During streaming, use instant scroll to prevent jitter
+      messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "end" });
+    } else if (messages.length > 0) {
+      // When not streaming, use smooth scroll
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [messages, status]);
 
   // Focus input on mount and scroll to it
   useEffect(() => {
@@ -33,6 +44,21 @@ export default function ChatPage() {
         block: "center" 
       });
     }, 100);
+  }, []);
+
+  // Detect manual scroll to disable auto-scroll
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
+      isAutoScrollingRef.current = isNearBottom;
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Handle input focus - scroll input into view quickly
@@ -90,7 +116,7 @@ export default function ChatPage() {
       )}
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-6 rounded-full bg-[#19c37d] flex items-center justify-center">
@@ -144,7 +170,7 @@ export default function ChatPage() {
                     >
                       <path
                         strokeLinecap="round"
-                        strokeLinejoin="round"
+                        strokeLinejoin="round"  
                         strokeWidth={2}
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                       />
