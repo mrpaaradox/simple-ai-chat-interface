@@ -97,7 +97,7 @@ export default function ChatPage() {
             <span className="text-xs sm:text-sm font-medium">Back</span>
           </Link>
           <h1 className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-white truncate max-w-[140px] sm:max-w-none">
-            <span className="hidden sm:inline">GPT - Generative Pretrained Transformer</span>
+            <span className="hidden sm:inline">GPT - Generative PreTrained Transformer</span>
             <span className="sm:hidden">ChatGPT</span>
           </h1>
           <div className="w-12 sm:w-16"></div>
