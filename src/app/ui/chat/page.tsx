@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -16,7 +17,7 @@ export default function ChatPage() {
   const [isRegeneratingStreaming, setIsRegeneratingStreaming] = useState(false);
   const [regeneratingMessageId, setRegeneratingMessageId] = useState<string | null>(null);
   const [regeneratedMessageId, setRegeneratedMessageId] = useState<string | null>(null);
-  const { messages, sendMessage, status, error, stop, setMessages, append } = useChat();
+  const { messages, sendMessage, status, error, stop, setMessages } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -178,7 +179,7 @@ export default function ChatPage() {
       let buffer = '';
       let accumulatedText = '';
       let messageAdded = false;
-      let actualMessageId = placeholderId; // Track the actual message ID being used
+      const actualMessageId = placeholderId; // Track the actual message ID being used
       
       while (true) {
         const { done, value } = await reader.read();
@@ -567,7 +568,7 @@ export default function ChatPage() {
           <div className="absolute inset-0 flex flex-col items-center justify-center px-3 sm:px-4 md:px-6 pointer-events-none z-10">
             <div className="w-full max-w-3xl pointer-events-auto">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium text-zinc-900 dark:text-zinc-100 mb-6 sm:mb-8 text-center px-2">
-                What's on the agenda today?
+                What&apos;s on the agenda today?
               </h1>
               <form onSubmit={handleSubmit} className="relative">
                 <div className="flex items-end gap-2 p-2 border border-zinc-300 dark:border-zinc-700 rounded-3xl bg-white dark:bg-[#2f2f2f] shadow-lg focus-within:border-zinc-400 dark:focus-within:border-zinc-600 transition-all">
