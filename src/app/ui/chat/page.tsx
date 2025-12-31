@@ -262,7 +262,7 @@ export default function ChatPage() {
                 <button
                   type="button"
                   onClick={stop}
-                  className="absolute right-2 sm:right-2.5 p-1.5 sm:p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 active:scale-95 transition-all duration-150"
+                  className="absolute right-2 sm:right-2.5 p-1.5 sm:p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 active:scale-95 transition-all duration-150 cursor-pointer"
                   aria-label="Stop generating"
                 >
                   <svg
@@ -278,7 +278,7 @@ export default function ChatPage() {
                   type="submit"
                   className={`absolute right-2 sm:right-2.5 p-1.5 sm:p-2 rounded-full transition-all duration-150 ${
                     input.trim() && status === "ready"
-                      ? "bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 active:scale-95 shadow-sm"
+                      ? "bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 active:scale-95 shadow-sm cursor-pointer"
                       : "bg-zinc-200 dark:bg-zinc-700 cursor-not-allowed"
                   }`}
                   disabled={status !== "ready" || !input.trim()}
