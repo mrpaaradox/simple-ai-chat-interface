@@ -35,22 +35,40 @@ A modern, high-performance AI chat application built with **Next.js 15**, **Verc
     cd ai-chatty
     ```
 
+2.  **Run the setup script:**
+    ```bash
+    ./setup.sh
+    ```
+    This script will ask you to paste your `GROQ_API_KEY`, install all necessary dependencies, and start the development server automatically.
+
+### Alternative Manual Installation
+
+If you prefer to set up the project manually, follow these steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/mrpaaradox/ai-chatty.git
+    cd ai-chatty
+    ```
+
 2.  **Install dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Set up environment variables:**
-    Create a `.env` file in the root directory and add your API keys:
+3.  **Configure Environment Variables:**
+    Create a file named `.env` in the root directory and add your Groq API key:
     ```env
     GROQ_API_KEY=your_groq_api_key_here
     ```
+    > [!TIP]
+    > You can get your API key from the [Groq Cloud Console](https://console.groq.com/keys).
 
 4.  **Run the development server:**
     ```bash
     npm run dev
     ```
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    The application will be available at [http://localhost:3000](http://localhost:3000).
 
 ## 📁 Project Structure
 
