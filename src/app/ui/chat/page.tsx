@@ -41,7 +41,7 @@ export default function ChatPage() {
   }, []);
 
   // Model name from backend
-  const modelName = "Kimi K2 Instruct";
+  const modelName = "K2 Open Instruct";
 
   // Handle new chat - clear everything to start fresh
   const handleNewChat = () => {
