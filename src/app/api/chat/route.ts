@@ -7,7 +7,13 @@ export async function POST(req: Request) {
 
     const result = streamText({
       model: groq("moonshotai/kimi-k2-instruct-0905"),
-      messages: await convertToModelMessages(messages),
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant. Give real life examples so that user can understand better. Try to answer in 2-3 sentences. Unless the user asks for a specific topic, answer in a general way.",
+        },
+        ...(await convertToModelMessages(messages)),
+      ],
     });
 
     result.usage.then((usage) => {
