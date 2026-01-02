@@ -1,4 +1,4 @@
-# AI Chatty 🤖
+# Simple AI Chat Interface 🤖
 
 A modern, high-performance AI chat application built with **Next.js 15**, **Vercel AI SDK**, and **Tailwind CSS 4**. This project provides a seamless chat experience with real-time streaming, message regeneration, and a premium user interface.
 

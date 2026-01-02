@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# AI Chatty Setup Script 🤖
+# Simple AI Chat Interface Setup Script 🤖
 # This script automates the environment configuration and dependency installation.
 
 # Exit immediately if a command exits with a non-zero status
 set -e
 
 echo "------------------------------------------"
-echo "🚀 Welcome to AI Chatty Setup"
+echo "🚀 Welcome to Simple AI Chat Interface Setup"
 echo "------------------------------------------"
 
 # 1. Ask for GROQ_API_KEY
