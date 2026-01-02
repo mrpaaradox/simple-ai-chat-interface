@@ -4,6 +4,7 @@ import { useCompletion } from "@ai-sdk/react";
 import Link from "next/link";
 import { useState } from "react";
 
+
 export default function StreamPage() {
   const [prompt, setPrompt] = useState("");
   const {
@@ -21,9 +22,12 @@ export default function StreamPage() {
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      <Link href={`/`}>
-        <p className="text-2xl sm: pl-4 md:pl-0 hover:cursor-pointer">Back</p>
-      </Link>
+      <div className="flex justify-between items-center mb-4 px-4 md:px-0">
+        <Link href={`/`}>
+          <p className="text-2xl hover:cursor-pointer">Back</p>
+        </Link>
+
+      </div>
       {error && <div className="text-red-500 mb-4">{error.message}</div>}
       {isLoading && !completion && (
         <div className="sm: pl-4 md:pl-0">Loading....</div>
