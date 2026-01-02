@@ -6,6 +6,7 @@ import { useChat } from "@ai-sdk/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+
 export default function ChatPage() {
   const router = useRouter();
   const [input, setInput] = useState("");
@@ -398,7 +399,10 @@ export default function ChatPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <span className="text-sm font-medium">{modelName}</span>
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium">{modelName}</span>
+
+            </div>
           </div>
         </header>
 
