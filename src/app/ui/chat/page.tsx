@@ -366,12 +366,12 @@ export default function ChatPage() {
           {/* User Profile */}
           <div className={`border-t border-zinc-200 dark:border-zinc-800 pt-2 ${sidebarOpen ? '' : 'flex justify-center'}`}>
             {sidebarOpen ? (
-              <Link href="/" className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer">
+              <div className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer">
                 <div className="w-7 h-7 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-semibold">
                   U
                 </div>
                 <span>User</span>
-              </Link>
+              </div>
             ) : (
               <Link href="/" className="w-10 h-10 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center justify-center cursor-pointer" title="User">
                 <div className="w-7 h-7 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-semibold">
