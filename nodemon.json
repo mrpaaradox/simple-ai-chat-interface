@@ -1,0 +1,17 @@
+{
+  "watch": [
+    "src",
+    "pages",
+    "app",
+    "components",
+    "lib",
+    ".env",
+    "next.config.js"
+  ],
+  "ext": "js,ts,tsx,json",
+  "ignore": [
+    ".next",
+    "node_modules"
+  ],
+  "exec": "next dev"
+}
