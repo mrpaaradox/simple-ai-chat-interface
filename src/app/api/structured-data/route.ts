@@ -8,7 +8,7 @@ export async function POST(request: Request) {
         const { dish } = await request.json(); 
 
     const result = await streamObject({
-        model: groq("moonshotai/kimi-k2-instruct-0905"),
+        model: groq("openai/gpt-oss-20b"),
         schema: recipeSchema,
         prompt: `Generate a recipe for ${dish}`
     })
